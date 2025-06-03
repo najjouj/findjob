@@ -3,6 +3,7 @@ import 'package:findjob/JobFinderAppUI/common/search_bar.dart';
 import 'package:findjob/JobFinderAppUI/models/company_offer.dart';
 import 'package:findjob/JobFinderAppUI/models/job_category_model.dart';
 import 'package:findjob/JobFinderAppUI/models/job_opportunity_model.dart';
+import 'package:findjob/pages/allJobsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
@@ -17,8 +18,8 @@ class JobFinderHomePageapp extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         forceMaterialTransparency: false,
-        leading: IconButton(onPressed: () {}, icon: Icon(Iconsax.menu5)),
-        title: Text(
+        leading: IconButton(onPressed: () {}, icon: const Icon(Iconsax.menu5)),
+        title: const Text(
           "Find a Perfect Job",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -27,26 +28,26 @@ class JobFinderHomePageapp extends StatelessWidget {
           bottom: false,
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProfileSection(),
                   //for search bar
-                  MySearchBar(),
+                  const MySearchBar(),
                   //for category items
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     height: 50,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: jobCategories
                           .map((categories) => Container(
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.all(10),
+                                margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                    gradient: LinearGradient(
+                                    gradient: const LinearGradient(
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
                                         colors: [
@@ -57,7 +58,7 @@ class JobFinderHomePageapp extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     categories.title,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
@@ -68,9 +69,11 @@ class JobFinderHomePageapp extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,19 +81,27 @@ class JobFinderHomePageapp extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Company Offer",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              "See All",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const AllJobPage()));
+                              },
+                              child: const Text(
+                                "See All",
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             )
                           ],
                         )
@@ -99,7 +110,7 @@ class JobFinderHomePageapp extends StatelessWidget {
                   ),
                   Container(
                     height: 190,
-                    margin: EdgeInsets.only(top: 10,left: 20),
+                    margin: const EdgeInsets.only(top: 10, left: 20),
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
@@ -107,14 +118,13 @@ class JobFinderHomePageapp extends StatelessWidget {
                           .map((job) => buildPopularCompaniesList(job))
                           .toList(),
                     ),
-                  )
-                  
-
-                  ,
-                  SizedBox(height: 20,),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -141,24 +151,21 @@ class JobFinderHomePageapp extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     height: 1,
                     color: Colors.grey.shade300,
                   ),
                   Container(
                     height: 225,
-                    margin: EdgeInsets.only(left: 15,right: 15,top: 5),
+                    margin: const EdgeInsets.only(left: 15, right: 15, top: 5),
                     child: ListView(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       children: jobOpportunities
-                          .map((job) => JobItems(job:job))
+                          .map((job) => JobItems(job: job))
                           .toList(),
                     ),
                   )
-               
-               
-               
                 ]),
           )),
     );
@@ -167,64 +174,67 @@ class JobFinderHomePageapp extends StatelessWidget {
   Widget buildPopularCompaniesList(CompanyOffer job) {
     return Container(
       width: 300,
-      margin: EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
-        color: job.color,
-        borderRadius: BorderRadius.circular(10)
-      ),
+          color: job.color, borderRadius: BorderRadius.circular(10)),
       child: Stack(
         children: [
-          Padding(padding: EdgeInsets.symmetric(horizontal: 12),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(job.logo,height: 40,),
-              SizedBox(height: 10,),
-              Text(job.jobTitle,style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16
-              ),),
-              Text(job.location,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.normal,
-                fontSize: 15
-              ),),
-              SizedBox(height: 10,),
-              Row(
-                children: job.jobTypes.map((type)=>Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 15
-                  ),
-                  margin: EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white
-                  ),
-                  child: Text(type),
-                )).toList(),
-              )
-            ],
-          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.network(
+                  job.logo,
+                  height: 40,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  job.jobTitle,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
+                ),
+                Text(
+                  job.location,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: job.jobTypes
+                      .map((type) => Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 15),
+                            margin: const EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white),
+                            child: Text(type),
+                          ))
+                      .toList(),
+                )
+              ],
+            ),
           ),
           Positioned(
-            right: 1,
-            bottom: 1,
-            top: 1,
-            child: Container(
-            margin:EdgeInsets.only(
-              top: 30,right: 20
-            ),
-            child: Text(job.salary,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17
-            ),
-          )))
-          
+              right: 1,
+              bottom: 1,
+              top: 1,
+              child: Container(
+                  margin: const EdgeInsets.only(top: 30, right: 20),
+                  child: Text(
+                    job.salary,
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
+                  )))
         ],
       ),
     );
@@ -233,17 +243,17 @@ class JobFinderHomePageapp extends StatelessWidget {
   GestureDetector ProfileSection() {
     return GestureDetector(
       child: Container(
-        margin: EdgeInsets.all(15),
+        margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
             border: Border.all(color: Colors.grey.shade400)),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Image.network(
@@ -254,7 +264,7 @@ class JobFinderHomePageapp extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(

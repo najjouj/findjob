@@ -7,7 +7,7 @@ class MySearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -16,7 +16,7 @@ class MySearchBar extends StatelessWidget {
               flex: 4,
               child: Container(
                 height: 55,
-                padding: EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.grey.shade300),
@@ -24,7 +24,7 @@ class MySearchBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Icon(
                           Icons.search,
@@ -33,8 +33,8 @@ class MySearchBar extends StatelessWidget {
                     Expanded(
                         flex: 6,
                         child: Container(
-                          margin: EdgeInsets.only(left: 5, right: 10),
-                          child: Text("Search for items here"),
+                          margin: const EdgeInsets.only(left: 5, right: 10),
+                          child: const Text("Search for items here"),
                         )),
                   ],
                 ),
@@ -42,9 +42,9 @@ class MySearchBar extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                margin: EdgeInsets.only(left: 10),
-                padding: EdgeInsets.symmetric(vertical: 16),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   color: Colors.black,
                 ),

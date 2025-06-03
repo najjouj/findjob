@@ -9,8 +9,8 @@ class JobItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 7, top: 7),
-      padding: EdgeInsets.all(15),
+      margin: const EdgeInsets.only(bottom: 7, top: 7),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.grey.shade200,
@@ -27,20 +27,20 @@ class JobItems extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 15
                     ),
-                    child: Text(job.title,style: TextStyle(
+                    child: Text(job.title,style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold
                     ),),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 15
                     ),
-                    child: Text(job.company,style: TextStyle(
+                    child: Text(job.company,style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                     ),),
@@ -53,8 +53,8 @@ class JobItems extends StatelessWidget {
               
           ),
           Container(
-            margin: EdgeInsets.only(right: 10),
-            child: Icon(Icons.more_vert,size: 30,),
+            margin: const EdgeInsets.only(right: 10),
+            child: const Icon(Icons.more_vert,size: 30,),
           )
         ],
       ),
