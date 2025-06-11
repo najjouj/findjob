@@ -28,7 +28,7 @@ class AllJobPage extends StatelessWidget {
             const SizedBox(height: 15,),
             Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              height: 500,
+              height: 550,
               child: ListView(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
