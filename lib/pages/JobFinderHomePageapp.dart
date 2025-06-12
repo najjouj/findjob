@@ -4,6 +4,7 @@ import 'package:findjob/JobFinderAppUI/models/company_offer.dart';
 import 'package:findjob/JobFinderAppUI/models/job_category_model.dart';
 import 'package:findjob/JobFinderAppUI/models/job_opportunity_model.dart';
 import 'package:findjob/pages/allJobsPage.dart';
+import 'package:findjob/pages/profilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
@@ -33,7 +34,14 @@ class JobFinderHomePageapp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfileSection(),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfilePage()));
+                      },
+                      child: ProfileSection()),
                   //for search bar
                   const MySearchBar(),
                   //for category items
@@ -93,7 +101,8 @@ class JobFinderHomePageapp extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const AllJobPage()));
+                                        builder: (context) =>
+                                            const AllJobPage()));
                               },
                               child: const Text(
                                 "See All",
@@ -240,9 +249,9 @@ class JobFinderHomePageapp extends StatelessWidget {
     );
   }
 
-  GestureDetector ProfileSection() {
-    return GestureDetector(
-      child: Container(
+  Widget ProfileSection() {
+    return 
+       Container(
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Colors.white,
@@ -287,7 +296,7 @@ class JobFinderHomePageapp extends StatelessWidget {
                 width: 15,
               )
             ]),
-      ),
-    );
+      )
+    ;
   }
 }
